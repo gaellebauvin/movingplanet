@@ -17,48 +17,40 @@ body {
 .planets .planet-1 {
   position: absolute;
   left: -10%;
-  bottom: -15%;
-  width: 29%; }
+  bottom: -15%; }
 .planets .planet-2 {
   position: absolute;
+  display: flex;
   left: 15%;
-  top: 35%;
-  width: 10%; }
+  top: 35%; }
 .planets .planet-3 {
   position: absolute;
   left: 28%;
-  top: 28%;
-  width: 4%; }
+  top: 28%; }
 .planets .planet-4 {
   position: absolute;
   left: 30%;
-  top: 50%;
-  width: 5%; }
+  top: 50%; }
 .planets .planet-5 {
   position: absolute;
   left: 40%;
-  top: 15%;
-  width: 12%; }
+  top: 15%; }
 .planets .planet-6 {
   position: absolute;
   left: 50%;
-  top: 40%;
-  width: 15%; }
+  top: 40%; }
 .planets .planet-7 {
   position: absolute;
   right: 27%;
-  top: 14%;
-  width: 5%; }
+  top: 14%; }
 .planets .planet-8 {
   position: absolute;
   right: 15%;
-  top: 48%;
-  width: 10%; }
+  top: 48%; }
 .planets .planet-9 {
   position: absolute;
   right: 15%;
-  top: 18%;
-  width: 3%; }
+  top: 18%; }
 @media screen and (max-width: 1200px) {
   .planets .planet-1 {
     left: -8%;
