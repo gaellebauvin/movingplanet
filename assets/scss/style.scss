@@ -48,7 +48,7 @@ body {
     position: absolute;
     left: -10%;
     bottom: -15%;
-    width: 29%;
+    width: 20%;
   }
   .container-planet {
     position: absolute;
@@ -171,6 +171,47 @@ body {
     box-sizing: border-box;
     img {
       max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-height: 1000px){
+  .planets {
+    .planet-1 {
+      left: -16%;
+      bottom: -42%;
+    }
+
+    .container-planet {
+      &.container-planet-2 {
+        width: 13%;
+      }
+      &.container-planet-3 {
+        width: 4%;
+      }
+      &.container-planet-4 {
+        width: 6%;
+      }
+      &.container-planet-5 {
+        top : 21%;
+        width: 12%;
+      }
+
+      &.container-planet-6 {
+        width: 13%;
+      }
+
+      &.container-planet-7 {
+        width: 6%;
+      }
+
+      &.container-planet-8 {
+        width: 10%;
+      }
+
+      &.container-planet-9 {
+        width: 5%;
+      }
     }
   }
 }

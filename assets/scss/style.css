@@ -42,7 +42,7 @@ body {
   position: absolute;
   left: -10%;
   bottom: -15%;
-  width: 29%; }
+  width: 20%; }
 .planets .container-planet {
   position: absolute; }
   .planets .container-planet .planet {
@@ -131,5 +131,27 @@ body {
     box-sizing: border-box; }
     .buttons .undo-btn img {
       max-width: 100%; }
+
+@media screen and (max-height: 1000px) {
+  .planets .planet-1 {
+    left: -16%;
+    bottom: -42%; }
+  .planets .container-planet.container-planet-2 {
+    width: 13%; }
+  .planets .container-planet.container-planet-3 {
+    width: 4%; }
+  .planets .container-planet.container-planet-4 {
+    width: 6%; }
+  .planets .container-planet.container-planet-5 {
+    top: 21%;
+    width: 12%; }
+  .planets .container-planet.container-planet-6 {
+    width: 13%; }
+  .planets .container-planet.container-planet-7 {
+    width: 6%; }
+  .planets .container-planet.container-planet-8 {
+    width: 10%; }
+  .planets .container-planet.container-planet-9 {
+    width: 5%; } }
 
 /*# sourceMappingURL=style.css.map */
