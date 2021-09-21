@@ -3,5 +3,72 @@
 }
 
 body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: contain;
   background: linear-gradient(180deg, #09303F 0%, #86A8E7 51.95%, #D0EDE7 100%);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.header h1 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 35px;
+  color: white;
+  width: 260px;
+}
+.header h1:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 101px;
+  border-radius: 7px;
+  background-color: white;
+  bottom: -15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.buttons .play-btn {
+  background-color: #09303F;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin-right: 30px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+.buttons .play-btn img {
+  max-width: 100%;
+}
+.buttons .undo-btn {
+  background-color: #09303F;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.buttons .undo-btn img {
+  max-width: 100%;
 }
