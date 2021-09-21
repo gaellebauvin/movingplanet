@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/gaellebauvin/movingplanet/issues"
   },
-  "homepage": "https://github.com/gaellebauvin/movingplanet#readme"
+  "homepage": "https://github.com/gaellebauvin/movingplanet#readme",
+  "dependencies": {
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.42.0"
+  }
 }
