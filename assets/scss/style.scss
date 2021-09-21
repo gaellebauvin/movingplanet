@@ -4,14 +4,20 @@
 
 body {
   margin: 0;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
   background-repeat: no-repeat;
   background-size: contain;
   background: linear-gradient(180deg, #09303F 0%, #86A8E7 51.95%, #D0EDE7 100%);
 }
 
 .header {
+  position: absolute;
+  top : 0;
+  right: 50%;
+  transform: translate(50%, 0);
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -39,11 +45,107 @@ body {
   }
 }
 
+.planets {
+  .planet-1 {
+    position: absolute;
+    left: -10%;
+    bottom: -15%;
+    width: 29%;
+  }
+  .container-planet {
+    position: absolute;
+
+    .planet {
+      img {
+        width: 100%;
+      }
+
+      &:hover {
+        .chevrons {
+            display: block;
+        }
+      }
+
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      .chevrons {
+        position: absolute;
+        width: fit-content;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        display: none;
+        img {
+          width: 25px;
+        }
+      }
+
+      &.horizontal {
+        .chevrons {
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+ &.container-planet-2 {
+   left: 10%;
+   top: 35%;
+   width: 15%;
+ }
+    &.container-planet-3 {
+      left: 24%;
+      top: 25%;
+      width: 6%;
+    }
+
+    &.container-planet-4 {
+      left: 32%;
+      top: 54%;
+      width: 8%;
+    }
+
+    &.container-planet-5 {
+      left: 40%;
+      top: 18%;
+      width: 14%;
+    }
+
+    &.container-planet-6 {
+      left: 50%;
+      top: 48%;
+      width: 15%;
+    }
+
+    &.container-planet-7 {
+      right: 25%;
+      top: 14%;
+      width: 8%;
+    }
+
+    &.container-planet-8 {
+      right: 15%;
+      top: 48%;
+      width: 12%;
+    }
+
+    &.container-planet-9 {
+      right: 10%;
+      top: 18%;
+      width: 5%;
+    }
+  }
+}
+
 .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+  position: absolute;
+  bottom : 0;
+  right: 50%;
+  transform: translate(50%, 0);
 
   #play-btn {
     background-color: #09303F;

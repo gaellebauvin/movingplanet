@@ -1,0 +1,125 @@
+body {
+  overflow: hidden;
+  position: relative;
+}
+.header {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, 0);
+}
+.buttons {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 0);
+}
+.planets {
+  .planet-1 {
+    position: absolute;
+    left: -10%;
+    bottom: -15%;
+  }
+  .planet-2 {
+    position: absolute;
+    display: flex;
+    left: 15%;
+    top: 35%;
+  }
+  .planet-3 {
+    position: absolute;
+    left: 28%;
+    top: 28%;
+  }
+  .planet-4 {
+    position: absolute;
+    left: 30%;
+    top: 50%;
+  }
+  .planet-5 {
+    position: absolute;
+    left: 40%;
+    top: 15%;
+  }
+  .planet-6 {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+  }
+  .planet-7 {
+    position: absolute;
+    right: 27%;
+    top: 14%;
+  }
+  .planet-8 {
+    position: absolute;
+    right: 15%;
+    top: 48%;
+  }
+  .planet-9 {
+    position: absolute;
+    right: 15%;
+    top: 18%;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .planet-1 {
+      left: -8%;
+      bottom: -10%;
+    }
+    .planet-2 {
+      top: 40%;
+    }
+    .planet-3 {
+      top: 32%;
+    }
+    .planet-4 {
+      top: 53%;
+    }
+    .planet-5 {
+      top: 20%;
+    }
+    .planet-6 {
+      top: 50%;
+    }
+    .planet-7 {
+      top: 22%;
+    }
+    .planet-8 {
+      top: 55%;
+    }
+    .planet-9 {
+      top: 28%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .planet-1 {
+      width: 35%;
+    }
+    .planet-2 {
+      width: 12%;
+    }
+    .planet-3 {
+      width: 6%;
+    }
+    .planet-4 {
+      width: 7%;
+    }
+    .planet-5 {
+      width: 14%;
+    }
+    .planet-6 {
+      width: 17%;
+    }
+    .planet-7 {
+      width: 7%;
+    }
+    .planet-8 {
+      width: 12%;
+    }
+    .planet-9 {
+      width: 5%;
+    }
+  }
+}
