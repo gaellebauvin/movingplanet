@@ -1,4 +1,7 @@
 * {
   font-family: 'Roboto', sans-serif; }
 
+body {
+  background: linear-gradient(180deg, #09303F 0%, #86A8E7 51.95%, #D0EDE7 100%); }
+
 /*# sourceMappingURL=style.css.map */
