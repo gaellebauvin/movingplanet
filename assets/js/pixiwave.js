@@ -6,10 +6,13 @@ const app = new PIXI.Application({
     transparent: true,
     resolution: window.devicePixelRatio || 1,
     autoResize:true,
+    resizeTo: window,
 });
 
-app.view.style.width = width+'px';app.view.style.height = height+'px';
-app.view.originWidth = width;app.view.originHeigh = height;
+app.view.style.width = width+'px';
+app.view.style.height = height+'px';
+app.view.originWidth = width;
+app.view.originHeigh = height;
 
 document.body.appendChild(app.view);
 

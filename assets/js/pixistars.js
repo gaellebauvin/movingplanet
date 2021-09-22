@@ -3,7 +3,7 @@ let starWidth = window.innerWidth;
 const starApp = new PIXI.Application({
     transparent: true,
     width:starWidth,
-    height: window.innerHeight/3
+    height: window.innerHeight/2.5
 });
 document.body.appendChild(starApp.view);
 
@@ -17,7 +17,7 @@ const baseSpeed = 0.025;
 let speed = 0;
 let warpSpeed = 0;
 const starStretch = 5;
-const starBaseSize = 2;
+const starBaseSize = 1.5;
 
 // Create the stars
 const stars = [];
