@@ -1,21 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const synth = new Tone.Synth().toDestination();
-    const now = Tone.now()
+var positionX = 0;
+var positonY = 0;
+var nbrClickX = 0;
+var nbrClickY = 0;
 
-    //PLay note with Synth
-    function playSynth(note, duration, time) {
-        synth.triggerAttackRelease(note, duration, time)
+$('.arrowleft').on('click', function () {
+    var planet = $(this).parents('.planet');
+    if (nbrClickX < 1 && nbrClickX >= -1 ) {
+        positionX = positionX - 66;
+        planet.css({'left': positionX + '%'});
+        nbrClickX = nbrClickX + 1;
     }
-
-    //OnClick undo button
-    document.getElementById('undo-btn')?.addEventListener('click', async () => {
-        playSynth("C4", "4n", now);
-        playSynth("G4", "4n", now + 0.5);
-        playSynth("A4", "4n", now + 1);
-        playSynth("G2", "4n", now + 2);
-        playSynth("G2", "4n", now + 3);
-        playSynth("B4", "4n", now + 4);
-        playSynth("C4", "4n", now + 5);
-        playSynth("C3", "4n", now + 5.5);
-    })
 });
+
+$('.arrowright').on('click', function () {
+    var planet = $(this).parents('.planet');
+    if (nbrClickX <= 1 && nbrClickX > -1) {
+        positionX = positionX + 66;
+        planet.css({'left': positionX + '%'});
+        nbrClickX = nbrClickX - 1;
+    }
+});
+
+$('.arrowtop').on('click', function () {
+    var planet = $(this).parents('.planet');
+    if (nbrClickY <= 1 && nbrClickY > -1 ) {
+        positonY = positonY - 66;
+        planet.css({'margin-top': positonY + '%'});
+        nbrClickY = nbrClickY - 1;
+        console.log(nbrClickY);
+    }
+});
+
+$('.arrowbottom').on('click', function () {
+    var planet = $(this).parents('.planet');
+    if (nbrClickY < 1 && nbrClickY >= -1 ) {
+        positonY = positonY + 66;
+        planet.css({'margin-top': positonY + '%'});
+        nbrClickY = nbrClickY + 1;
+        console.log(nbrClickY);
+    }
+});
+
