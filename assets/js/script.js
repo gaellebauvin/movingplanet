@@ -10,6 +10,7 @@ $('.arrowleft').on('click', function () {
         planet.css({'left': positionX + '%'});
         nbrClickX = nbrClickX + 1;
     }
+    console.log("script");
 });
 
 $('.arrowright').on('click', function () {
@@ -30,7 +31,6 @@ $('.arrowtop').on('click', function () {
         console.log(nbrClickY);
     }
 });
-
 $('.arrowbottom').on('click', function () {
     var planet = $(this).parents('.planet');
     if (nbrClickY < 1 && nbrClickY >= -1 ) {
