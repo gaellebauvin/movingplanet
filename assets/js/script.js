@@ -1,26 +1,25 @@
 let firstLevel = document.getElementById('first-level');
-let greatFinalNotes = {
-    'note1': 'C4',
-    'note2': 'G4',
-    'note3': 'A4',
-    'note4': 'G2',
-    'note5': 'G2',
-    'note6': 'B4',
-    'note7': 'C4',
-    'note8': 'C3',
+let notesLevel1 = {
+    'note1': ['C4', 0],
+    'note2': ['G4', 0.5],
+    'note3': ['A4', 1],
+    'note4': ['G2', 2],
+    'note5': ['G2', 3],
+    'note6': ['B4', 4],
+    'note7': ['C4', 5],
+    'note8': ['C3', 5.5],
 }
 
-let finalNotes = {
-    'note1': 'A1',
-    'note2': 'A1',
-    'note3': 'A1',
-    'note4': 'A1',
-    'note5': 'A1',
-    'note6': 'A1',
-    'note7': 'A1',
-    'note8': 'A1',
+let resultNotes = {
+    'note1': ['A1', 0],
+    'note2': ['A1', 0.5],
+    'note3': ['A1', 1],
+    'note4': ['A1', 2],
+    'note5': ['A1', 3],
+    'note6': ['A1', 4],
+    'note7': ['A1', 5],
+    'note8': ['A1', 5.5],
 }
-console.log(finalNotes)
 
 function foundNote(numberNote, note, offset) {
     let notes = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
@@ -33,34 +32,52 @@ function foundNote(numberNote, note, offset) {
     let remainderNoteLetter = newIndexNoteLetter % 7;
     let i = 0;
     let finalNoteLetter;
+
     for (const note of notes) {
         i++
         if (i === remainderNoteLetter) {
             finalNoteLetter = note
         }
     }
+
     let finalNote = finalNoteLetter + (parseInt(noteNumber) + parseInt(divisionNoteLetter))
 
     const synth = new Tone.Synth().toDestination();
     const now = Tone.now();
 
     synth.triggerAttackRelease(finalNote, "4n", now);
-    finalNotes[numberNote] = note
-    console.log('insert : ' + finalNotes + 'number : ' + numberNote + '&' + note)
-
 }
 
-function resultNotes(finalNotes, greatFinalNotes) {
-    console.log(finalNotes, greatFinalNotes)
-
-    if (JSON.stringify(finalNotes) === JSON.stringify(greatFinalNotes)) {
-        alert("bravoooooo!")
-        console.log(finalNotes, greatFinalNotes)
+function resultNotesLevel(resultNotes, notesLevel1) {
+    if (JSON.stringify(resultNotes) === JSON.stringify(notesLevel1)) {
+        playSynth(resultNotes)
+        levelUp();
     } else {
-        alert('bruh')
-        console.log(finalNotes, greatFinalNotes)
+        //TODO: Add wrong final notes
+    }
+}
+
+function levelUp() {
+    if ($('#first-level').addClass('level-up')) {
+        $('.header h1').html('Bravo !');
+        $('.buttons').html('<a href="" class="btn-next-level">Niveau suivant</a>');
+    }
+}
+
+async function playSynth(notes) {
+    await Tone.start()
+
+    const synth = new Tone.Synth().toDestination();
+    const now = Tone.now();
+
+    if (Tone.context.state !== 'running') {
+        Tone.context.resume();
     }
 
+    for (let note in notes) {
+        console.log(notes[note][0], notes[note][1])
+        synth.triggerAttackRelease(notes[note][0], "4n", now + notes[note][1]);
+    }
 }
 
 //First Level Page
@@ -68,27 +85,12 @@ if (firstLevel) {
     $(document).ready(function () {
         //OnClick undo button
         $('#undo-btn').on('click', async function () {
-            await Tone.start()
-
-            const synth = new Tone.Synth().toDestination();
-            const now = Tone.now();
-
-            if (Tone.context.state !== 'running') {
-                Tone.context.resume();
-            }
-
-            synth.triggerAttackRelease("C4", "4n", now);
-            synth.triggerAttackRelease("G4", "4n", now + 0.5);
-            synth.triggerAttackRelease("A4", "4n", now + 1);
-            synth.triggerAttackRelease("G2", "4n", now + 2);
-            synth.triggerAttackRelease("G2", "4n", now + 3);
-            synth.triggerAttackRelease("B4", "4n", now + 4);
-            synth.triggerAttackRelease("C4", "4n", now + 5);
-            synth.triggerAttackRelease("C3", "4n", now + 5.5);
+            playSynth(notesLevel1)
         });
 
         $('#play-btn').on('click', async function () {
-            resultNotes(finalNotes, greatFinalNotes)
+            console.log(resultNotes, notesLevel1)
+            resultNotesLevel(resultNotes, notesLevel1)
         });
     });
 }
@@ -98,25 +100,7 @@ $('.planet').on('mouseup', function () {
 
     if ($(this).css('inset') >= "0px 0px 0px 0px" && $(this).css('inset') <= "50px 50px 50px 50px") {
         //la planete est bien placée
-        $(this).draggable( "disable" );
 
-        if( $(this).hasClass('planet-2')){
-            $(this).children().attr('src', 'assets/images/planets/planet-good-2.svg');
-        } else if($(this).hasClass('planet-3')) {
-            $(this).children().attr('src', 'assets/images/planets/planet-good-3.svg');
-        } else if($(this).hasClass('planet-4')) {
-            $(this).children().attr('src', 'assets/images/planets/planet-good-4.svg');
-        }else if($(this).hasClass('planet-5')){
-            $(this).children().attr('src', 'assets/images/planets/planet-good-5.svg');
-        } else if($(this).hasClass('planet-6')){
-            $(this).children().attr('src', 'assets/images/planets/planet-good-6.svg');
-        } else if($(this).hasClass('planet-7')){
-            $(this).children().attr('src', 'assets/images/planets/planet-good-7.svg');
-        } else if($(this).hasClass('planet-8')){
-            $(this).children().attr('src', 'assets/images/planets/planet-good-8.svg');
-        } else if($(this).hasClass('planet-9')){
-            $(this).children().attr('src', 'assets/images/planets/planet-good-9.svg');
-        }
     }
 })
 
@@ -136,7 +120,29 @@ $(document).ready(function () {
         var left = arrayLeft[0];
         if (-50 <= top && top <= 50 && -50 <= left && left <= 50) {
             //la planete est bien placée
-            console.log("bien placé");
+            //add the right note in the table "resultNotes".
+            resultNotes[$(this).data('note-number')][0] = $(this).data('great-note')
+
+            $(this).draggable("disable");
+
+            if ($(this).hasClass('planet-2')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-2.svg');
+            } else if ($(this).hasClass('planet-3')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-3.svg');
+            } else if ($(this).hasClass('planet-4')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-4.svg');
+            } else if ($(this).hasClass('planet-5')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-5.svg');
+            } else if ($(this).hasClass('planet-6')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-6.svg');
+            } else if ($(this).hasClass('planet-7')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-7.svg');
+            } else if ($(this).hasClass('planet-8')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-8.svg');
+            } else if ($(this).hasClass('planet-9')) {
+                $(this).children().attr('src', 'assets/images/planets/planet-good-9.svg');
+            }
+
             const synth = new Tone.Synth().toDestination();
             const now = Tone.now();
             synth.triggerAttackRelease($(this).data('great-note'), "4n", now);
@@ -149,8 +155,6 @@ $(document).ready(function () {
 
             while (i !== true) {
                 if (-difference <= top && top <= difference && -difference <= left && left <= difference) {
-                    console.log("pas bien place", entier)
-                    console.log('errror found : ' + $(this).data('great-note'), entier)
                     foundNote($(this).data('note-number'), $(this).data('great-note'), entier)
                     i = true;
                 } else {
