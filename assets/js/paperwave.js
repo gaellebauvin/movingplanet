@@ -1,10 +1,13 @@
 // Code ported to Paper.js from http://the389.com/9/1/
 // with permission.
+//git test pour la main
 
 var values = {
     friction: 0.8,
-    timeStep: 0.01,
-    amount: 15,
+    timeStep: 0.5,
+    amount: 5,
+    //timeStep: 0.01,
+    // amount: 15,
     mass: 2,
     count: 0
 };
@@ -13,7 +16,7 @@ values.invMass = 1 / values.mass;
 var path, springs;
 var size = view.size * [1.2, 1];
 
-var Spring = function(a, b, strength, restLength) {
+var Spring = function (a, b, strength, restLength) {
     this.a = a;
     this.b = b;
     this.restLength = restLength || 80;
@@ -21,7 +24,7 @@ var Spring = function(a, b, strength, restLength) {
     this.mamb = values.invMass * values.invMass;
 };
 
-Spring.prototype.update = function() {
+Spring.prototype.update = function () {
     var delta = this.b - this.a;
     var dist = delta.length;
     var normDistStrength = (dist - this.restLength) /
@@ -36,9 +39,15 @@ Spring.prototype.update = function() {
 
 function createPath(strength) {
     var path = new Path({
-    strokeColor: 'white',
-    opacity: 0.9
-});
+        strokeColor: 'white',
+        opacity: 0.9
+    });
+    var squareSymbol = new Symbol(path);
+
+    // lets place some squares using symbols, and rotate each instance slightly
+    for (var i = 0; i < 5; i++) {
+        var placedSymbol = squareSymbol.place(new Point(20 + (i * 80), 50));
+    }
     springs = [];
     for (var i = 0; i <= values.amount; i++) {
         var segment = path.add(new Point(i / values.amount, 0.5) * size);
@@ -100,7 +109,7 @@ function updateWave(path) {
     for (var j = 0, l = springs.length; j < l; j++) {
         springs[j].update();
     }
-    path.smooth({ type: 'continuous' });
+    path.smooth({type: 'continuous'});
 }
 
 function onKeyDown(event) {
