@@ -1,6 +1,28 @@
 let firstLevel = document.getElementById('first-level');
+let greatFinalNotes = {
+    'note1': 'C4',
+    'note2': 'G4',
+    'note3': 'A4',
+    'note4': 'G2',
+    'note5': 'G2',
+    'note6': 'B4',
+    'note7': 'C4',
+    'note8': 'C3',
+}
 
-function foundNote(note, offset) {
+let finalNotes = {
+    'note1': 'A1',
+    'note2': 'A1',
+    'note3': 'A1',
+    'note4': 'A1',
+    'note5': 'A1',
+    'note6': 'A1',
+    'note7': 'A1',
+    'note8': 'A1',
+}
+console.log(finalNotes)
+
+function foundNote(numberNote, note, offset) {
     let notes = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     let noteLetter = note.substr(0, 1);
     let noteNumber = note.substr(1, 2);
@@ -18,6 +40,27 @@ function foundNote(note, offset) {
         }
     }
     let finalNote = finalNoteLetter + (parseInt(noteNumber) + parseInt(divisionNoteLetter))
+
+    const synth = new Tone.Synth().toDestination();
+    const now = Tone.now();
+
+    synth.triggerAttackRelease(finalNote, "4n", now);
+    finalNotes[numberNote] = note
+    console.log('insert : ' + finalNotes + 'number : ' + numberNote + '&' + note)
+
+}
+
+function resultNotes(finalNotes, greatFinalNotes) {
+    console.log(finalNotes, greatFinalNotes)
+
+    if (JSON.stringify(finalNotes) === JSON.stringify(greatFinalNotes)) {
+        alert("bravoooooo!")
+        console.log(finalNotes, greatFinalNotes)
+    } else {
+        alert('bruh')
+        console.log(finalNotes, greatFinalNotes)
+    }
+
 }
 
 //First Level Page
@@ -43,6 +86,10 @@ if (firstLevel) {
             synth.triggerAttackRelease("C4", "4n", now + 5);
             synth.triggerAttackRelease("C3", "4n", now + 5.5);
         });
+
+        $('#play-btn').on('click', async function () {
+            resultNotes(finalNotes, greatFinalNotes)
+        });
     });
 }
 
@@ -60,29 +107,35 @@ $(document).ready(function () {
         $(this).css({"inset": randomX + "px auto auto " + randomY + "px"});
     })
 
-    $('.planet').on('mouseup', function (){
+    $('.planet').on('mouseup', function () {
         var arrayTop = $(this).css('top').split("p");
         var top = arrayTop[0];
         var arrayLeft = $(this).css('left').split("p");
         var left = arrayLeft[0];
         if (-50 <= top && top <= 50 && -50 <= left && left <= 50) {
-        //la planete est bien placée
+            //la planete est bien placée
             console.log("bien placé");
-        }  else {
-        // Tant qu'on a pas trouvé dans quel interval se trouve la planète on continue, quand on a trouvé on lui donne un chiffre ( variable entier)
-           var i = false;
-           var entier = 1;
-           var difference = 51;
+            const synth = new Tone.Synth().toDestination();
+            const now = Tone.now();
+            synth.triggerAttackRelease($(this).data('great-note'), "4n", now);
+        } else {
+            // Tant qu'on a pas trouvé dans quel interval se trouve la planète on continue,
+            // quand on a trouvé on lui donne un chiffre ( variable entier)
+            var i = false;
+            var entier = 1;
+            var difference = 51;
 
-           while( i !== true ){
-               if( -difference <= top && top <= difference && -difference <= left && left <= difference){
-                   console.log("pas bien place", entier )
-                   i = true;
-               } else {
-                   entier = entier + 1;
-                   difference = difference + 100;
-               }
-           }
+            while (i !== true) {
+                if (-difference <= top && top <= difference && -difference <= left && left <= difference) {
+                    console.log("pas bien place", entier)
+                    console.log('errror found : ' + $(this).data('great-note'), entier)
+                    foundNote($(this).data('note-number'), $(this).data('great-note'), entier)
+                    i = true;
+                } else {
+                    entier = entier + 1;
+                    difference = difference + 100;
+                }
+            }
         }
     })
 });
