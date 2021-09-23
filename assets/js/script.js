@@ -1,43 +1,16 @@
-var positionX = 0;
-var positonY = 0;
-var nbrClickX = 0;
-var nbrClickY = 0;
-
-$('.arrowleft').on('click', function () {
-    var planet = $(this).parents('.planet');
-    if (nbrClickX < 1 && nbrClickX >= -1 ) {
-        positionX = positionX - 66;
-        planet.css({'left': positionX + '%'});
-        nbrClickX = nbrClickX + 1;
+$('.planet').on('mouseup', function (){
+    if ($(this).css('inset') >= "0px 0px 0px 0px" && $(this).css('inset') <= "50px 50px 50px 50px"){
+        //la planete est bien placée
     }
+})
+$(document).ready(function(){
+    var planets = $('.planet');
+    $.each(planets, function (index, div) {
+        var randomX = Math.floor((Math.random()*125));
+        var randomY = Math.floor((Math.random()*125));
+
+        $(this).css({"inset" : randomX + "px auto auto " + randomY + "px"});
+    })
 });
 
-$('.arrowright').on('click', function () {
-    var planet = $(this).parents('.planet');
-    if (nbrClickX <= 1 && nbrClickX > -1) {
-        positionX = positionX + 66;
-        planet.css({'left': positionX + '%'});
-        nbrClickX = nbrClickX - 1;
-    }
-});
-
-$('.arrowtop').on('click', function () {
-    var planet = $(this).parents('.planet');
-    if (nbrClickY <= 1 && nbrClickY > -1 ) {
-        positonY = positonY - 66;
-        planet.css({'margin-top': positonY + '%'});
-        nbrClickY = nbrClickY - 1;
-        console.log(nbrClickY);
-    }
-});
-
-$('.arrowbottom').on('click', function () {
-    var planet = $(this).parents('.planet');
-    if (nbrClickY < 1 && nbrClickY >= -1 ) {
-        positonY = positonY + 66;
-        planet.css({'margin-top': positonY + '%'});
-        nbrClickY = nbrClickY + 1;
-        console.log(nbrClickY);
-    }
-});
-
+$('.planet').draggable();
