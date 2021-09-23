@@ -13,14 +13,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.min.js"
             integrity="sha512-y/gX3imWQKHaL1WVyuaK5HE6gMjpju/NV+nC9nz5cmoCS3pjgwOYlZ8ToBNlu4qxiQ/EIMRnYhY/WX70tVwuTw=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+    <!-- Load the Paper.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+    <!-- Define inlined PaperScript associate it with myCanvas -->
+    <script type="text/paperscript" src="assets/js/test2.js" canvas="myCanvas"></script>
 <body id="first-level">
 <div class="header">
     <h1 class="title">Reproduis le son à l’aide des planètes</h1>
 </div>
 <div class="space">
     <div class="stars"></div>
-    <div class="lines"></div>
+    <div class="lines">
+        <canvas id="myCanvas" resize></canvas>
+    </div>
     <div class="planets">
         <div class="planet-1">
             <img src="assets/images/planets/planet7.svg">

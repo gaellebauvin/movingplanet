@@ -19,6 +19,7 @@
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
+    "paper": "^0.12.15",
     "sass": "^1.42.0",
     "tone": "^14.7.77"
   }
