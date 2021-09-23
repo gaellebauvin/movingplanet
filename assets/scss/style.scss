@@ -78,8 +78,20 @@ body {
     .planet {
       cursor: pointer;
 
+      &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        opacity: .5;
+      }
+
       &:hover {
-        .chevrons {
+        &:after {
+          font-size: 40px;
           opacity: 1;
         }
       }
@@ -113,48 +125,96 @@ body {
       left: 10%;
       top: 38%;
       width: 15%;
+      .planet {
+        &:after {
+          content: '1';
+        }
+      }
     }
 
     &.container-planet-3 {
       left: 24%;
       top: 26%;
       width: 6%;
+
+      .planet {
+        &:after {
+          content: '2';
+        }
+      }
+
     }
 
     &.container-planet-4 {
       left: 30%;
       top: 57%;
       width: 8%;
+
+      .planet {
+        &:after {
+          content: '3';
+        }
+      }
     }
 
     &.container-planet-5 {
       left: 40%;
       top: 21%;
       width: 14%;
+
+      .planet {
+        &:after {
+          content: '4';
+        }
+      }
     }
 
     &.container-planet-6 {
       left: 50%;
       top: 57%;
       width: 18%;
+
+      .planet {
+        &:after {
+          content: '5';
+        }
+      }
     }
 
     &.container-planet-7 {
       right: 21%;
       top: 17%;
       width: 9%;
+
+      .planet {
+        &:after {
+          content: '6';
+        }
+      }
     }
 
     &.container-planet-8 {
       right: 13%;
       top: 45%;
       width: 12%;
+
+      .planet {
+        &:after {
+          content: '7';
+        }
+      }
     }
 
     &.container-planet-9 {
       right: 10%;
       top: 21%;
       width: 5%;
+
+      .planet {
+        &:after {
+          content: '8';
+        }
+      }
     }
 
     @media screen and (max-width: 1200px) {
@@ -296,13 +356,11 @@ body {
 
   #undo-btn {
     background-color: #09303F;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    padding: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 20px;
+    border-radius: 23px;
     border: none;
     cursor: pointer;
     box-sizing: border-box;

@@ -80,7 +80,18 @@ body {
   display: flex;
   justify-content: center;
 }
-.planets .container-planet .planet:hover .chevrons {
+.planets .container-planet .planet:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+.planets .container-planet .planet:hover:after {
+  font-size: 40px;
   opacity: 1;
 }
 .planets .container-planet .planet .chevrons {
@@ -103,40 +114,64 @@ body {
   top: 38%;
   width: 15%;
 }
+.planets .container-planet.container-planet-2 .planet:after {
+  content: "1";
+}
 .planets .container-planet.container-planet-3 {
   left: 24%;
   top: 26%;
   width: 6%;
+}
+.planets .container-planet.container-planet-3 .planet:after {
+  content: "2";
 }
 .planets .container-planet.container-planet-4 {
   left: 30%;
   top: 57%;
   width: 8%;
 }
+.planets .container-planet.container-planet-4 .planet:after {
+  content: "3";
+}
 .planets .container-planet.container-planet-5 {
   left: 40%;
   top: 21%;
   width: 14%;
+}
+.planets .container-planet.container-planet-5 .planet:after {
+  content: "4";
 }
 .planets .container-planet.container-planet-6 {
   left: 50%;
   top: 57%;
   width: 18%;
 }
+.planets .container-planet.container-planet-6 .planet:after {
+  content: "5";
+}
 .planets .container-planet.container-planet-7 {
   right: 21%;
   top: 17%;
   width: 9%;
+}
+.planets .container-planet.container-planet-7 .planet:after {
+  content: "6";
 }
 .planets .container-planet.container-planet-8 {
   right: 13%;
   top: 45%;
   width: 12%;
 }
+.planets .container-planet.container-planet-8 .planet:after {
+  content: "7";
+}
 .planets .container-planet.container-planet-9 {
   right: 10%;
   top: 21%;
   width: 5%;
+}
+.planets .container-planet.container-planet-9 .planet:after {
+  content: "8";
 }
 @media screen and (max-width: 1200px) {
   .planets .container-planet.container-planet-2 {
@@ -251,13 +286,11 @@ body {
 }
 .buttons #undo-btn {
   background-color: #09303F;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  padding: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 20px;
+  border-radius: 23px;
   border: none;
   cursor: pointer;
   box-sizing: border-box;
