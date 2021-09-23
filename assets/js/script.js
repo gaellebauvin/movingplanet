@@ -47,10 +47,32 @@ if (firstLevel) {
 }
 
 $('.planet').on('mouseup', function () {
+    $(this).css('width', 'auto');
+
     if ($(this).css('inset') >= "0px 0px 0px 0px" && $(this).css('inset') <= "50px 50px 50px 50px") {
         //la planete est bien placée
+        $(this).draggable( "disable" );
+
+        if( $(this).hasClass('planet-2')){
+            $(this).children().attr('src', 'assets/images/planets/planet-good-2.svg');
+        } else if($(this).hasClass('planet-3')) {
+            $(this).children().attr('src', 'assets/images/planets/planet-good-3.svg');
+        } else if($(this).hasClass('planet-4')) {
+            $(this).children().attr('src', 'assets/images/planets/planet-good-4.svg');
+        }else if($(this).hasClass('planet-5')){
+            $(this).children().attr('src', 'assets/images/planets/planet-good-5.svg');
+        } else if($(this).hasClass('planet-6')){
+            $(this).children().attr('src', 'assets/images/planets/planet-good-6.svg');
+        } else if($(this).hasClass('planet-7')){
+            $(this).children().attr('src', 'assets/images/planets/planet-good-7.svg');
+        } else if($(this).hasClass('planet-8')){
+            $(this).children().attr('src', 'assets/images/planets/planet-good-8.svg');
+        } else if($(this).hasClass('planet-9')){
+            $(this).children().attr('src', 'assets/images/planets/planet-good-9.svg');
+        }
     }
 })
+
 $(document).ready(function () {
     var planets = $('.planet');
     $.each(planets, function (index, div) {
