@@ -264,7 +264,7 @@ body {
   right: 50%;
   transform: translate(50%, 0);
 
-  .play-btn {
+  #play-btn {
     background-color: #09303F;
     width: 80px;
     height: 80px;
@@ -281,7 +281,7 @@ body {
     }
   }
 
-  .undo-btn {
+  #undo-btn {
     background-color: #09303F;
     width: 40px;
     height: 40px;
@@ -298,6 +298,11 @@ body {
   }
 }
 
+//wave
+.lines {
+  position: relative;
+  top: 20em;
+}
 //@media screen and (max-height: 1000px) {
 //  .planets {
 //    .planet-1 {
