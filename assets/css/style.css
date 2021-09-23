@@ -75,7 +75,7 @@ body {
   position: absolute;
 }
 .planets .container-planet .planet {
-  cursor: pointer;
+  cursor: grab;
   position: relative;
   display: flex;
   justify-content: center;
