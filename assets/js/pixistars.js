@@ -3,9 +3,9 @@ let starWidth = window.innerWidth;
 const starApp = new PIXI.Application({
     transparent: true,
     width:starWidth,
-    height: window.innerHeight/2.5
+    height: window.innerHeight
 });
-document.body.appendChild(starApp.view);
+document.getElementsByClassName("stars")[0].appendChild(starApp.view);
 
 // Get the texture for rope.
 const starTexture = PIXI.Texture.from('assets/images/star.svg');

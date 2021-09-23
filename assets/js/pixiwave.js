@@ -14,7 +14,7 @@ app.view.style.height = height+'px';
 app.view.originWidth = width;
 app.view.originHeigh = height;
 
-document.body.appendChild(app.view);
+document.getElementsByClassName("lines")[0].appendChild(app.view);
 
 let count = 0;
 
