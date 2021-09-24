@@ -57,6 +57,13 @@ body {
   bottom: -8px;
 }
 
+.lines img {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translate(0, -50%);
+}
+
 .planets::selection {
   background-color: rgba(255, 255, 255, 0);
 }
