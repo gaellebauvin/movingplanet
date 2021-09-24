@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -7,6 +8,14 @@ html {
 }
 
 body {
+  -moz-user-select: none;
+  /* Firefox */
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none;
+  /* Internet explorer depuis la version 10 et Edge */
+  user-select: none;
+  /* Propriété standard */
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -48,6 +57,12 @@ body {
   bottom: -8px;
 }
 
+.planets::selection {
+  background-color: rgba(255, 255, 255, 0);
+}
+.planets:focus {
+  outline: none;
+}
 .planets .planet-1 {
   position: absolute;
   left: -12%;
