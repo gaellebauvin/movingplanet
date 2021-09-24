@@ -83,8 +83,10 @@ async function playSynth(notes) {
     for (let z = 2; z<=10; z++){
         $('.planet-'+z).addClass('planet-move').css('animation-delay', delay+'s');
 
-        if( z >= 4){
+        if( z >= 4 && z !== 8){
             delay = delay + 1;
+        } else if (z === 8) {
+            delay = 5.5;
         } else {
             delay = delay + 0.5;
         }
@@ -104,7 +106,6 @@ if (firstLevel) {
     $(document).ready(function () {
         if ($('.tooltiptext').hasClass('first-reload')) {
             $('#play-btn').prop('disabled', true)
-            console.log('cocuocu')
         }
         //OnClick undo button
         $('#undo-btn').on('click', async function () {
@@ -115,9 +116,7 @@ if (firstLevel) {
                 $('#play-btn').removeClass('disable-btn')
 
                 playSynth(notesLevel1)
-                console.log('icii')
             } else {
-                console.log('llaa')
                 $('#play-btn').css('background-color', '#09303f5c')
                 playSynth(notesLevel1)
             }
