@@ -46,6 +46,8 @@ function foundNote(numberNote, note, offset) {
     const now = Tone.now();
 
     synth.triggerAttackRelease(finalNote, "4n", now);
+    resultNotes[numberNote][0] = finalNote
+
 }
 
 function resultNotesLevel(resultNotes, notesLevel1) {
@@ -53,10 +55,11 @@ function resultNotesLevel(resultNotes, notesLevel1) {
         playSynth(resultNotes)
         levelUp();
     } else {
-        //TODO: Add wrong final notes
+        playSynth(resultNotes)
     }
 }
 
+//Next Level
 function levelUp() {
     if ($('#first-level').addClass('level-up')) {
         $('.header h1').html('Bravo !');
@@ -64,6 +67,7 @@ function levelUp() {
     }
 }
 
+//Play note with Synth
 async function playSynth(notes) {
     await Tone.start()
 
@@ -74,8 +78,23 @@ async function playSynth(notes) {
         Tone.context.resume();
     }
 
+
+    let delay = 0;
+    for (let z = 2; z<=10; z++){
+        $('.planet-'+z).addClass('planet-move').css('animation-delay', delay+'s');
+
+        if( z >= 4){
+            delay = delay + 1;
+        } else {
+            delay = delay + 0.5;
+        }
+
+        $('.planet-'+z).on('animationend', function (){
+            $('.planet-'+z).removeClass('planet-move');
+        })
+    }
+
     for (let note in notes) {
-        console.log(notes[note][0], notes[note][1])
         synth.triggerAttackRelease(notes[note][0], "4n", now + notes[note][1]);
     }
 }
@@ -83,26 +102,32 @@ async function playSynth(notes) {
 //First Level Page
 if (firstLevel) {
     $(document).ready(function () {
+        if ($('.tooltiptext').hasClass('first-reload')) {
+            $('#play-btn').prop('disabled', true)
+            console.log('cocuocu')
+        }
         //OnClick undo button
         $('#undo-btn').on('click', async function () {
-            playSynth(notesLevel1)
+            if ($('.tooltiptext').hasClass('first-reload')) {
+                $('.tooltiptext').css('visibility', 'hidden')
+                $('.tooltiptext').removeClass('first-reload')
+                $('#play-btn').prop('disabled', false)
+                $('#play-btn').removeClass('disable-btn')
+
+                playSynth(notesLevel1)
+                console.log('icii')
+            } else {
+                console.log('llaa')
+                $('#play-btn').css('background-color', '#09303f5c')
+                playSynth(notesLevel1)
+            }
         });
 
         $('#play-btn').on('click', async function () {
-            console.log(resultNotes, notesLevel1)
             resultNotesLevel(resultNotes, notesLevel1)
         });
     });
 }
-
-$('.planet').on('mouseup', function () {
-    $(this).css('width', 'auto');
-
-    if ($(this).css('inset') >= "0px 0px 0px 0px" && $(this).css('inset') <= "50px 50px 50px 50px") {
-        //la planete est bien placée
-
-    }
-})
 
 $(document).ready(function () {
     var planets = $('.planet');
@@ -114,12 +139,14 @@ $(document).ready(function () {
     })
 
     $('.planet').on('mouseup', function () {
+        $(this).css('width', 'auto');
+
         var arrayTop = $(this).css('top').split("p");
         var top = arrayTop[0];
         var arrayLeft = $(this).css('left').split("p");
         var left = arrayLeft[0];
         if (-50 <= top && top <= 50 && -50 <= left && left <= 50) {
-            //la planete est bien placée
+            //the planet is well placed
             //add the right note in the table "resultNotes".
             resultNotes[$(this).data('note-number')][0] = $(this).data('great-note')
 
@@ -147,8 +174,8 @@ $(document).ready(function () {
             const now = Tone.now();
             synth.triggerAttackRelease($(this).data('great-note'), "4n", now);
         } else {
-            // Tant qu'on a pas trouvé dans quel interval se trouve la planète on continue,
-            // quand on a trouvé on lui donne un chiffre ( variable entier)
+            //As long as we have not found in which interval the planet is, we continue,
+            //when we have found it we give it a number (integer variable)
             var i = false;
             var entier = 1;
             var difference = 51;

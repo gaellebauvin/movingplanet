@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: "Roboto", sans-serif;
 }
@@ -7,6 +8,14 @@ html {
 }
 
 body {
+  -moz-user-select: none;
+  /* Firefox */
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none;
+  /* Internet explorer depuis la version 10 et Edge */
+  user-select: none;
+  /* Propriété standard */
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -55,6 +64,12 @@ body {
   transform: translate(0, -50%);
 }
 
+.planets::selection {
+  background-color: rgba(255, 255, 255, 0);
+}
+.planets:focus {
+  outline: none;
+}
 .planets .planet-1 {
   position: absolute;
   left: -12%;
@@ -80,6 +95,9 @@ body {
 }
 .planets .container-planet {
   position: absolute;
+}
+.planets .container-planet .planet::selection {
+  background-color: rgba(0, 0, 255, 0) !important;
 }
 .planets .container-planet .planet {
   cursor: grab;
@@ -269,6 +287,9 @@ body {
   right: 50%;
   transform: translate(50%, 0);
 }
+.buttons .disable-btn {
+  background-color: rgba(9, 48, 63, 0.5) !important;
+}
 .buttons #play-btn {
   background-color: #09303F;
   width: 80px;
@@ -302,10 +323,40 @@ body {
   cursor: pointer;
   box-sizing: border-box;
   transition: all 0.2s ease-in;
+  position: relative;
+  display: inline-block;
 }
 .buttons #undo-btn:hover {
   opacity: 0.9;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.buttons #undo-btn .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  transition: opacity 0.3s;
+}
+.buttons #undo-btn .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.buttons #undo-btn .first-reload {
+  visibility: visible;
 }
 .buttons #undo-btn img {
   max-width: 100%;
@@ -325,7 +376,102 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+.planet-move {
+  animation-duration: 0.7s;
+  animation-name: move;
+}
+
+@keyframes move {
+  from {
+    width: auto;
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
 .lines {
   position: relative;
   top: 20em;
+}
+
+.planets .planet-1 {
+  position: absolute;
+  left: -10%;
+  bottom: -15%;
+}
+.planets .planet-2 {
+  position: absolute;
+  display: flex;
+  left: 15%;
+  top: 35%;
+}
+.planets .planet-3 {
+  position: absolute;
+  left: 28%;
+  top: 28%;
+}
+.planets .planet-4 {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+}
+.planets .planet-5 {
+  position: absolute;
+  left: 40%;
+  top: 15%;
+}
+.planets .planet-6 {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+}
+.planets .planet-7 {
+  position: absolute;
+  right: 27%;
+  top: 14%;
+}
+.planets .planet-8 {
+  position: absolute;
+  right: 15%;
+  top: 48%;
+}
+.planets .planet-9 {
+  position: absolute;
+  right: 15%;
+  top: 18%;
+}
+@media screen and (max-width: 1200px) {
+  .planets .planet-1 {
+    left: -8%;
+    bottom: -10%;
+  }
+  .planets .planet-2 {
+    top: 40%;
+  }
+  .planets .planet-3 {
+    top: 32%;
+  }
+  .planets .planet-4 {
+    top: 53%;
+  }
+  .planets .planet-5 {
+    top: 20%;
+  }
+  .planets .planet-6 {
+    top: 50%;
+  }
+  .planets .planet-7 {
+    top: 22%;
+  }
+  .planets .planet-8 {
+    top: 55%;
+  }
+  .planets .planet-9 {
+    top: 28%;
+  }
+}
+
+canvas[resize] {
+  width: 100%;
+  height: 100%;
 }
