@@ -389,11 +389,6 @@ body {
     transform: scale(1.1);
   }
 }
-.lines {
-  position: relative;
-  top: 20em;
-}
-
 .planets .planet-1 {
   position: absolute;
   left: -10%;
