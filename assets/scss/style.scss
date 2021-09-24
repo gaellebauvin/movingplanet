@@ -393,6 +393,21 @@ body {
   }
 }
 
+.planet-move {
+  animation-duration: 0.7s;
+  animation-name: move;
+}
+
+@keyframes move {
+  from {
+    width: auto;
+  }
+
+  to {
+      transform: scale(1.1);
+    }
+}
+
 //wave
 .lines {
   position: relative;

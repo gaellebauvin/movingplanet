@@ -74,8 +74,23 @@ async function playSynth(notes) {
         Tone.context.resume();
     }
 
+
+    let delay = 0;
+    for (let z = 2; z<=10; z++){
+        $('.planet-'+z).addClass('planet-move').css('animation-delay', delay+'s');
+
+        if( z >= 4){
+            delay = delay + 1;
+        } else {
+            delay = delay + 0.5;
+        }
+
+        $('.planet-'+z).on('animationend', function (){
+            $('.planet-'+z).removeClass('planet-move');
+        })
+    }
+
     for (let note in notes) {
-        console.log(notes[note][0], notes[note][1])
         synth.triggerAttackRelease(notes[note][0], "4n", now + notes[note][1]);
     }
 }
@@ -89,20 +104,10 @@ if (firstLevel) {
         });
 
         $('#play-btn').on('click', async function () {
-            console.log(resultNotes, notesLevel1)
             resultNotesLevel(resultNotes, notesLevel1)
         });
     });
 }
-
-$('.planet').on('mouseup', function () {
-    $(this).css('width', 'auto');
-
-    if ($(this).css('inset') >= "0px 0px 0px 0px" && $(this).css('inset') <= "50px 50px 50px 50px") {
-        //la planete est bien placée
-
-    }
-})
 
 $(document).ready(function () {
     var planets = $('.planet');
@@ -114,6 +119,8 @@ $(document).ready(function () {
     })
 
     $('.planet').on('mouseup', function () {
+        $(this).css('width', 'auto');
+
         var arrayTop = $(this).css('top').split("p");
         var top = arrayTop[0];
         var arrayLeft = $(this).css('left').split("p");
