@@ -4,10 +4,10 @@
 
 var values = {
     friction: 0.8,
-    timeStep: 0.5,
-    amount: 5,
-    //timeStep: 0.01,
-    // amount: 15,
+    // timeStep: 0.5,
+    // amount: 5,
+    timeStep: 0.01,
+    amount: 15,
     mass: 2,
     count: 0
 };
