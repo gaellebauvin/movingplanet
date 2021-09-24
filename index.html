@@ -5,7 +5,6 @@
     <title>Moving planets</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/aissatou.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
@@ -28,59 +27,61 @@
     </div>
     <div class="planets">
         <div class="planet-1">
-            <img src="assets/images/planets/planet7.svg">
+            <img src="assets/images/planets/planet7.svg" alt="">
         </div>
 
         <div class="container-planet container-planet-2">
             <div class="planet planet-2 horizontal" data-note-number="note1" data-great-note="C4">
-                <img src="assets/images/planets/planet9.svg">
+                <img src="assets/images/planets/planet9.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-3">
             <div class="planet planet-3" data-note-number="note2" data-great-note="G4">
-                <img src="assets/images/planets/planet2.svg">
+                <img src="assets/images/planets/planet2.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-4">
             <div class="planet planet-4 horizontal" data-note-number="note3" data-great-note="A4">
-                <img src="assets/images/planets/planet1.svg">
+                <img src="assets/images/planets/planet1.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-5">
             <div class="planet planet-5 horizontal" data-note-number="note4" data-great-note="G2">
-                <img src="assets/images/planets/planet6.svg">
+                <img src="assets/images/planets/planet6.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-6">
             <div class="planet planet-6" data-note-number="note5" data-great-note="G2">
-                <img src="assets/images/planets/planet8.svg">
+                <img src="assets/images/planets/planet8.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-7">
             <div class="planet planet-7" data-note-number="note6" data-great-note="B4">
-                <img src="assets/images/planets/planet3.svg">
+                <img src="assets/images/planets/planet3.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-8">
             <div class="planet planet-8" data-note-number="note7" data-great-note="C4">
-                <img src="assets/images/planets/planet5.svg">
+                <img src="assets/images/planets/planet5.svg" alt="">
             </div>
         </div>
         <div class="container-planet container-planet-9">
             <div class="planet planet-9 horizontal" data-note-number="note8" data-great-note="C3">
-                <img src="assets/images/planets/planet4.svg">
+                <img src="assets/images/planets/planet4.svg" alt="">
             </div>
         </div>
     </div>
 </div>
 <div class="buttons">
-    <button id="play-btn"><img src="assets/images/icon/play-button.svg" alt=""></button>
-    <button id="undo-btn">Rejouer le son</button>
+    <button id="play-btn" class="disable-btn"><img src="assets/images/icon/play-button.svg" alt=""></button>
+    <button id="undo-btn">
+        Rejouer le son
+        <span class="tooltiptext first-reload">Cliquer pour jouer la mélodie à reproduire</span>
+    </button>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="assets/js/script.js"></script>
-<script type="text/javascript" src="assets/js/level-up.js"></script>
 <script src="assets/js/pixistars.js"></script>
 <!--
 <script src="assets/js/pixiwave.js"></script>
