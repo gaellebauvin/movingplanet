@@ -74,6 +74,9 @@ body {
 .planets .container-planet {
   position: absolute;
 }
+.planets .container-planet .planet::selection {
+  background-color: rgba(0, 0, 255, 0) !important;
+}
 .planets .container-planet .planet {
   cursor: grab;
   position: relative;
@@ -443,35 +446,6 @@ body {
   }
   .planets .planet-9 {
     top: 28%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .planets .planet-1 {
-    width: 35%;
-  }
-  .planets .planet-2 {
-    width: 12%;
-  }
-  .planets .planet-3 {
-    width: 6%;
-  }
-  .planets .planet-4 {
-    width: 7%;
-  }
-  .planets .planet-5 {
-    width: 14%;
-  }
-  .planets .planet-6 {
-    width: 17%;
-  }
-  .planets .planet-7 {
-    width: 7%;
-  }
-  .planets .planet-8 {
-    width: 12%;
-  }
-  .planets .planet-9 {
-    width: 5%;
   }
 }
 
